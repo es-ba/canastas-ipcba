@@ -2,5 +2,5 @@
 
 import { ProcedureDef } from './types-principal';
 
-export const ProceduresPuntapieInicial:ProcedureDef[] = [
+export const ProceduresCanastas:ProcedureDef[] = [
 ];

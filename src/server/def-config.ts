@@ -3,11 +3,13 @@ server:
   port: 3021
   session-store: memory-saved
 db:
+  description: Base de datos para canastas
   motor: postgresql
   port: 5432
   host: localhost
-  database: canastas_db
+  database: muleto_ipc_db
   schema: ccc
+  search_path: [ipcba, ccc]
 login:
   schema: ipcba
   table: usuarios
