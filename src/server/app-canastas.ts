@@ -4,27 +4,24 @@ import { AppBackend, Context, Request,
     ClientModuleDefinition, OptsClientPage, MenuDefinition, MenuInfoBase
 } from "./types-principal";
 
-import { usuarios   } from './table-usuarios';
+import { agrupaciones   } from './table-agrupaciones';
 
 import {staticConfigYaml} from './def-config';
+import { ProceduresCanastas } from "./procedures-canastas";
 
 export class AppCanastas extends AppBackend{
-    constructor(){
-        super();
-    }
     override configStaticConfig(){
         super.configStaticConfig();
         this.setStaticConfig(staticConfigYaml);
     }
-    override getMenu(context:Context):MenuDefinition{
-        var menuContent:MenuInfoBase[]=[];
-        if(context.user && context.user.rol=="admin"){
-            menuContent.push(
-                {menuType:'menu', name:'config', label:'configurar', menuContent:[
-                    {menuType:'table', name:'usuarios'  },
-                ]}
-            )
-        };
+    override async getProcedures(){
+        const parentProc = await super.getProcedures();
+                return parentProc.concat(ProceduresCanastas);
+    }
+    override getMenu(_context:Context):MenuDefinition{
+        var menuContent:MenuInfoBase[]=[
+            {menuType:'table', name:'agrupaciones'},
+        ];
         return {menu:menuContent};
     }
     override clientIncludes(req:Request|null, opts:OptsClientPage):ClientModuleDefinition[]{
@@ -56,7 +53,7 @@ export class AppCanastas extends AppBackend{
         super.prepareGetTables();
         this.getTableDefinition={
             ... this.getTableDefinition,
-            usuarios  ,
+            agrupaciones,
         }
     }
 }

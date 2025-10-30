@@ -1,11 +1,11 @@
 {
   "name": "canastas-ipcba",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "license": "MIT",
   "description": "Aplicación de gestión de canastas para el IPCBA",
-  "main": "dist/server/server-principal.js",
-  "types": "dist/server/server-principal.d.ts",
+  "main": "dist/server/server-canastas.js",
+  "types": "dist/server/server-canastas.d.ts",
   "files": [
     "dist",
     "install"
@@ -31,6 +31,6 @@
     "test": "mocha --reporter spec --bail --check-leaks test/",
     "dump": "npm start -- --dump-db",
     "dumpb": "(tsc -p tsconfig-server.json  || echo \"continue w/error\") && npm run dump",
-    "start": "node dist/server/server-principal.js"
+    "start": "node dist/server/server-canastas.js"
   }
 }
