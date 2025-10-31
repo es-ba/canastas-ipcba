@@ -40,6 +40,7 @@ install:
       post-adapt:
       - ../node_modules/pg-triggers/lib/function-changes-trg.sql
       - ../node_modules/pg-triggers/lib/enance.sql
+      - ../install/agrupaciones_changes_trg.sql
 logo:
   path: client/img
 `;
